@@ -7,9 +7,19 @@ type person struct {
 	lname string
 }
 
+type secretAgent struct {
+	person
+	licenseToKill bool
+}
+
 func (p person) speak() {
 	fmt.Println(p.fname, `says, "Good morning, Songsak."`)
 }
+
+func (sa secretAgent) speak() {
+	fmt.Println(sa.fname, sa.lname, `says, "Skaken, not stirred."`)
+}
+
 func main() {
 	xi := []int{2, 4, 7, 9, 42}
 	fmt.Println(xi)
@@ -26,5 +36,14 @@ func main() {
 	}
 	fmt.Println(p1)
 	p1.speak()
+
+	sa1 := secretAgent{
+		person{
+			"James",
+			"Bond",
+		},
+		true,
+	}
+	sa1.speak()
 
 }
